@@ -20,7 +20,7 @@ RUN \
   mkdir /data && \
   cd /data && \
   cat /tmp/installed.pkg | while read line; do \
-  yumdownloader $line \
+  yumdownloader $line; \
   done && \
   yum install -y createrepo && \
   createrepo .
