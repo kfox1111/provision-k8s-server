@@ -12,7 +12,7 @@ RUN \
   echo "gpgcheck=1" && \
   echo "repo_gpgcheck=1" && \
   echo "gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg" \
-  ) \
+  ) | \
   cat > /etc/yum.repos.d/kubernetes.repo && \
   curl -L "https://packages.cloud.google.com/yum/doc/yum-key.gpg" -o yum-key.gpg && \
   curl -L "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg" -o rpm-package-key.gpg && \
