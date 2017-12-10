@@ -1,9 +1,6 @@
 FROM centos:centos7
 
 RUN \
-  yum clean all && \
-  yum install -y docker && \
-  yum list installed | awk 'NR >2 {print $1}' >/tmp/installed.pkg && \
   ( \
   echo "[kubernetes]" && \
   echo "name=Kubernetes" && \
@@ -13,10 +10,12 @@ RUN \
   echo "repo_gpgcheck=1" && \
   echo "gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg" \
   ) | \
+  yum clean all && \
+  yum install -y docker kubelet kubeadm kubectl && \
+  yum list installed | awk 'NR >2 {print $1}' >/tmp/installed.pkg && \
   cat > /etc/yum.repos.d/kubernetes.repo && \
   curl -L "https://packages.cloud.google.com/yum/doc/yum-key.gpg" -o yum-key.gpg && \
   curl -L "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg" -o rpm-package-key.gpg && \
-  yum install -y kubelet kubeadm kubectl && \
   mkdir /data && \
   cd /data && \
   cat /tmp/installed.pkg | while read line; do \
