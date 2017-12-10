@@ -13,7 +13,7 @@ RUN \
   cat > /etc/yum.repos.d/kubernetes.repo && \
   yum clean all && \
   yum upgrade -y && \
-  yum install -y docker kubelet kubeadm kubectl bind-license && \
+  yum install -y docker kubelet kubeadm kubectl bind-libs-lite systemd-sysv && \
   yum list installed | awk 'NR >2 {print $1}' >/tmp/installed.pkg && \
   curl -L "https://packages.cloud.google.com/yum/doc/yum-key.gpg" -o yum-key.gpg && \
   curl -L "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg" -o rpm-package-key.gpg && \
