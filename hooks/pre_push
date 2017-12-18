@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+hubbuildtools/hubhookhelpers/pre_push
+
