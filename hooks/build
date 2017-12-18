@@ -2,7 +2,7 @@
 
 git clone https://github.com/kfox1111/hubbuildtools
 
-export AUTO_PREFIX="rpmbuild-version"
+export AUTO_PREFIX="rpmrepo-version"
 export AUTO_PREFIX_PACKAGE=kubelet
 #export NEW_BUILD=1
 
